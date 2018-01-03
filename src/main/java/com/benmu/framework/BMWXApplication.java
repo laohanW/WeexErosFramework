@@ -5,6 +5,7 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
+import android.util.Log;
 
 import com.benmu.framework.activity.AbstractWeexActivity;
 import com.benmu.framework.adapter.router.RouterTracker;
@@ -16,6 +17,8 @@ import com.benmu.framework.model.PlatformConfigBean;
 import com.benmu.framework.update.SynSerivceBinder;
 import com.benmu.framework.update.VersionChecker;
 import com.benmu.framework.utils.DebugableUtil;
+import com.benmu.framework.utils.SharePreferenceUtil;
+import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKInstance;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;

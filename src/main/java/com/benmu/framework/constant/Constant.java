@@ -74,6 +74,7 @@ public class Constant {
         public static final String SP_DOWNLOAD_VERSION = "SP_DOWNLOAD_VERSION";
         public static final String SP_CID = "SP_CID";
         public static final String SP_INTERCEPTOR_ACTIVE = "SP_INTERCEPTOR_ACTIVE";
+        public static final String SP_DEBUG_ACTIVE = "SP_DEBUG_ACTIVE";
         public static final String SP_FONTSIZE = "SP_FONTSIZE";
         public static final String SP_APPCHANNEL = "SP_APPCHANNEL";
         public static final String SP_KEY_WH = "SP_KEY_WH";
@@ -197,6 +198,8 @@ public class Constant {
 
     public static final String BUNDLE_ZIP_NAME = "bundle.zip";
 
+    public static final String DEBUG_ACTIVE = "debug_active";
+    public static final String DEBUG_DEACTIVE = "debug_deactivate";
     public static final String INTERCEPTOR_ACTIVE = "active";
     public static final String INTERCEPTOR_DEACTIVE = "deactivate";
 

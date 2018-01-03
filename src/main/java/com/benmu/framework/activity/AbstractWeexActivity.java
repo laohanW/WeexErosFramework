@@ -68,6 +68,7 @@ import com.taobao.weex.RenderContainer;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.WXSDKInstance;
+import com.taobao.weex.bridge.WXBridgeManager;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.umeng.analytics.MobclickAgent;
 
@@ -773,10 +774,12 @@ public class AbstractWeexActivity extends AppCompatActivity implements IWXRender
                 finish();
                 return;
             } else if (uri.getQueryParameterNames().contains("_wx_devtool")) {
+                WXEnvironment.sDebugServerConnectable = true;
                 WXEnvironment.sRemoteDebugProxyUrl = uri.getQueryParameter("_wx_devtool");
                 WXSDKEngine.reload();
                 Toast.makeText(this, "devtool", Toast.LENGTH_SHORT).show();
-                finish();
+//                finish();
+                refresh();
                 return;
             } else if (code.contains("_wx_debug")) {
                 uri = Uri.parse(code);

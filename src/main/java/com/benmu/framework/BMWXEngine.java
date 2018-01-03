@@ -3,6 +3,7 @@ package com.benmu.framework;
 import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.benmu.framework.constant.Constant;
 import com.benmu.framework.event.DispatchEventCenter;
@@ -19,6 +20,7 @@ import com.benmu.framework.utils.BaseCommonUtil;
 import com.benmu.framework.utils.DebugableUtil;
 import com.benmu.framework.utils.SharePreferenceUtil;
 import com.taobao.weex.InitConfig;
+import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.umeng.analytics.MobclickAgent;
@@ -117,6 +119,12 @@ public class BMWXEngine {
     }
 
     private static void engineStart(Application app) {
+        String active = SharePreferenceUtil.getDebugActive(app);
+        if (active.equals(Constant.DEBUG_ACTIVE)){
+            WXEnvironment.sDebugServerConnectable=true;
+            WXEnvironment.sRemoteDebugMode = true;
+            WXEnvironment.sRemoteDebugProxyUrl=BMWXEnvironment.mPlatformConfig.getDebugUrl();
+        }
         WXSDKEngine.initialize(app,
                 new InitConfig.Builder()
                         .setImgAdapter(new DefaultWXImageAdapter()).setHttpAdapter(new

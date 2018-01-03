@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import com.benmu.framework.constant.Constant;
 
 import java.io.Serializable;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by Carry on 17/2/8.
@@ -191,12 +192,26 @@ public class SharePreferenceUtil {
         }
         return "";
     }
+    public static String getDebugActive(Context context) {
+        if (context != null) {
+            SharedPreferences sharedPreferences = context.getSharedPreferences(Constant
+                    .SP.SP_NATIVE_NAME, Context.MODE_PRIVATE);
+            return sharedPreferences.getString(Constant.SP.SP_DEBUG_ACTIVE, "");
+        }
+        return "";
+    }
 
     public static void setInterceptorActive(Context context, String active) {
         if (context != null) {
             SharedPreferences sharedPreferences = context.getSharedPreferences(Constant
                     .SP.SP_NATIVE_NAME, Context.MODE_PRIVATE);
             sharedPreferences.edit().putString(Constant.SP.SP_INTERCEPTOR_ACTIVE, active).apply();
+        }
+    }
+    public static void setDebugActive(Context context,String active){
+        if (context != null) {
+            SharedPreferences sharedPreferences = context.getSharedPreferences(Constant.SP.SP_NATIVE_NAME, Context.MODE_PRIVATE);
+            sharedPreferences.edit().putString(Constant.SP.SP_DEBUG_ACTIVE, active).apply();
         }
     }
 

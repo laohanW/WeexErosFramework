@@ -3,6 +3,7 @@ package com.benmu.framework.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -20,10 +21,11 @@ import com.benmu.framework.utils.SharePreferenceUtil;
  * Created by Carry on 2017/8/25.
  */
 
-public class DebugActivity extends AbstractWeexActivity {
+public class DebugActivity extends AppCompatActivity {
     private TextView tv_appversion;
     private TextView tv_jsverision;
     private CheckBox cb_inter;
+    private CheckBox cb_debug;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class DebugActivity extends AbstractWeexActivity {
         tv_appversion = (TextView) findViewById(R.id.tv_appversion);
         tv_jsverision = (TextView) findViewById(R.id.tv_jsverision);
         cb_inter = (CheckBox) findViewById(R.id.cb_inter);
+        cb_debug = (CheckBox) findViewById(R.id.cb_debug);
 
         tv_appversion.setText(BaseCommonUtil.getVersionName(this));
         String activeState = SharePreferenceUtil.getInterceptorActive(this);
@@ -50,10 +53,18 @@ public class DebugActivity extends AbstractWeexActivity {
         cb_inter.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                SharePreferenceUtil.setInterceptorActive(mAct, isChecked ? Constant
+                SharePreferenceUtil.setInterceptorActive(getBaseContext(), isChecked ? Constant
                         .INTERCEPTOR_ACTIVE : Constant.INTERCEPTOR_DEACTIVE);
             }
         });
+        String debugActiveState = SharePreferenceUtil.getDebugActive(this);
+        cb_debug.setChecked(Constant.DEBUG_ACTIVE.equals(debugActiveState));
+        cb_debug.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                SharePreferenceUtil.setDebugActive(getBaseContext(), isChecked ? Constant
+                        .DEBUG_ACTIVE : Constant.DEBUG_DEACTIVE);
+            }
+        });
     }
-
 }

@@ -143,6 +143,48 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:layout_marginTop="20dp"
+
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="调试开关"
+                android:textColor="@color/c_666666"
+                android:textSize="15sp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_horizontal"
+                android:id="@+id/tv_title_debug"
+                />
+
+            <CheckBox
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/cb_debug"
+                android:layout_below="@+id/tv_title_debug"
+                android:layout_marginLeft="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/c_666666"
+                android:textSize="15sp"
+                android:text="切换状态重启应用才能生效"
+                android:layout_toRightOf="@+id/cb_debug"
+                android:layout_alignBaseline="@+id/cb_debug"
+                android:layout_marginLeft="10dp"
+                />
+
+
+        </RelativeLayout>
+
         <!--<LinearLayout-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="wrap_content"-->

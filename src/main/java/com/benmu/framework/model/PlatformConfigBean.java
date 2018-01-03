@@ -10,6 +10,7 @@ public class PlatformConfigBean implements Serializable {
     private String AppName;
     private String appBoard;
     private boolean androidIsListenHomeBack;
+    private String debugUrl;
     private Page Page;
     private Url url;
     private Wechat wechat;
@@ -48,6 +49,13 @@ public class PlatformConfigBean implements Serializable {
         this.amap = amap;
     }
 
+    public String getDebugUrl() {
+        return debugUrl;
+    }
+
+    public void setDebugUrl(String debugUrl) {
+        this.debugUrl = debugUrl;
+    }
     public String getAppName() {
         return AppName;
     }
